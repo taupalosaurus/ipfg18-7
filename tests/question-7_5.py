@@ -1,12 +1,12 @@
 test = {
-  'name': 'question 7.4',
+  'name': 'question 7.5',
   'points': 1,
   'suites': [
     {
       'cases': [
         {
           'code': r"""
-          >>> type(triangle_area_list) == types.FunctionType
+          >>> type(string1) == str
           True
           """,
           'hidden': False,
@@ -14,42 +14,15 @@ test = {
         },
         {
           'code': r"""
-          >>> len(param)
-          1
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> np.isclose(triangle_area_list([[0,0], [1,0], [0,2]]), 1.)
-          True
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> np.isclose(triangle_area_list([[0,0], [2,1], [0,3]]), 3.)
-          True
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> np.isclose(triangle_area_list([[0,0], [1,0], [0,1]]), 0.5)
-          True
+          >>> len(string1) 
+          123
           """,
           'hidden': False,
           'locked': False
         }
       ],
       'scored': True,
-      'setup': """
-import numpy as np, inspect, types
-param = inspect.signature(triangle_area_list).parameters
-""",
+      'setup': '',
       'teardown': '',
       'type': 'doctest'
     },
@@ -57,7 +30,7 @@ param = inspect.signature(triangle_area_list).parameters
       'cases': [
         {
           'code': r"""
-          >>> type(triangle_area_dict) == types.FunctionType
+          >>> type(word_is_in_text) == list
           True
           """,
           'hidden': False,
@@ -65,31 +38,7 @@ param = inspect.signature(triangle_area_list).parameters
         },
         {
           'code': r"""
-          >>> len(param)
-          1
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> np.isclose(triangle_area_dict({1: (0,0), 2: (1,0), 3: (0,2)}), 1.)
-          True
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> np.isclose(triangle_area_dict({1: (0,0), 2: (2,1), 3: (0,3)}), 3.)
-          True
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> np.isclose(triangle_area_dict({1: (0,0), 2: (1,0), 3: (0,1)}), 0.5)
+          >>>  word_is_in_text == [True, False, False, True]
           True
           """,
           'hidden': False,
@@ -97,10 +46,87 @@ param = inspect.signature(triangle_area_list).parameters
         }
       ],
       'scored': True,
-      'setup': """
-import numpy as np, inspect, types
-param = inspect.signature(triangle_area_dict).parameters
-""",
+      'setup': '',
+      'teardown': '',
+      'type': 'doctest'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> type(string2) == str
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> len(string2) 
+          115
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> 'the' in string2 
+          False
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> string2[31:34] == string2[74:77] == string2[89:92] == string2[100:103] == ' a '
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': '',
+      'teardown': '',
+      'type': 'doctest'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> type(string3) == str
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> len(string3) 
+          98
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> string3[60] == '_' 
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> string3[68:75] == ' the im'
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': '',
       'teardown': '',
       'type': 'doctest'
     }

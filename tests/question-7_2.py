@@ -6,7 +6,23 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> type(t2)==dict
+          >>> type(t1) == list
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> type(t2) == dict
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> np.allclose(list(t2.items()), [(0,-5),(1,10.5),(2,-1),(3,4),(4,3.14)])
           True
           """,
           'hidden': False,
@@ -14,7 +30,7 @@ test = {
         }
       ],
       'scored': True,
-      'setup': '',
+      'setup': 'import numpy as np',
       'teardown': '',
       'type': 'doctest'
     }

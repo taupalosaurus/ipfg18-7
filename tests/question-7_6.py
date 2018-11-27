@@ -1,12 +1,12 @@
 test = {
-  'name': 'question 7.4',
+  'name': 'question 7.6',
   'points': 1,
   'suites': [
     {
       'cases': [
         {
           'code': r"""
-          >>> type(triangle_area_list) == types.FunctionType
+          >>> type(read_densities_join) == types.FunctionType
           True
           """,
           'hidden': False,
@@ -14,7 +14,7 @@ test = {
         },
         {
           'code': r"""
-          >>> len(param)
+          >>> len(param_j)
           1
           """,
           'hidden': False,
@@ -22,7 +22,7 @@ test = {
         },
         {
           'code': r"""
-          >>> np.isclose(triangle_area_list([[0,0], [1,0], [0,2]]), 1.)
+          >>> type(read_densities_substrings) == types.FunctionType
           True
           """,
           'hidden': False,
@@ -30,16 +30,8 @@ test = {
         },
         {
           'code': r"""
-          >>> np.isclose(triangle_area_list([[0,0], [2,1], [0,3]]), 3.)
-          True
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> np.isclose(triangle_area_list([[0,0], [1,0], [0,1]]), 0.5)
-          True
+          >>> len(param_s)
+          1
           """,
           'hidden': False,
           'locked': False
@@ -47,8 +39,9 @@ test = {
       ],
       'scored': True,
       'setup': """
-import numpy as np, inspect, types
-param = inspect.signature(triangle_area_list).parameters
+import inspect, types
+param_j = inspect.signature(read_densities_join).parameters
+param_s = inspect.signature(read_densities_substrings).parameters
 """,
       'teardown': '',
       'type': 'doctest'
@@ -57,7 +50,7 @@ param = inspect.signature(triangle_area_list).parameters
       'cases': [
         {
           'code': r"""
-          >>> type(triangle_area_dict) == types.FunctionType
+          >>> type(d_join) == dict
           True
           """,
           'hidden': False,
@@ -65,15 +58,7 @@ param = inspect.signature(triangle_area_list).parameters
         },
         {
           'code': r"""
-          >>> len(param)
-          1
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> np.isclose(triangle_area_dict({1: (0,0), 2: (1,0), 3: (0,2)}), 1.)
+          >>> type(d_substrings) == dict
           True
           """,
           'hidden': False,
@@ -81,15 +66,7 @@ param = inspect.signature(triangle_area_list).parameters
         },
         {
           'code': r"""
-          >>> np.isclose(triangle_area_dict({1: (0,0), 2: (2,1), 3: (0,3)}), 3.)
-          True
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> np.isclose(triangle_area_dict({1: (0,0), 2: (1,0), 3: (0,1)}), 0.5)
+          >>> len(d_join) == len(d_substrings) == 19
           True
           """,
           'hidden': False,
@@ -98,8 +75,37 @@ param = inspect.signature(triangle_area_list).parameters
       ],
       'scored': True,
       'setup': """
-import numpy as np, inspect, types
-param = inspect.signature(triangle_area_dict).parameters
+f='data/densities.dat';
+d_join=read_densities_join(f);
+d_substrings=read_densities_substrings(f)
+""",
+      'teardown': '',
+      'type': 'doctest'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> sorted(list(d_join.keys()))
+          ['Earth core', 'Earth mean', 'Moon', 'Sun core', 'Sun mean', 'air', 'gasoline', 'gold', 'granite', 'human body', 'ice', 'iron', 'limestone', 'mercury', 'platinium', 'proton', 'pure water', 'seawater', 'silver']
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> len([1 for k in d_join if k in d_substrings and d_join[k]==d_substrings[k]]) == len(d_join)
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': """
+f='data/densities.dat';
+d_join=read_densities_join(f);
+d_substrings=read_densities_substrings(f)
 """,
       'teardown': '',
       'type': 'doctest'

@@ -6,7 +6,47 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> len([1 for k in d1 if k in d2 and d1[k]==d2[k]]) == len(d2)
+          >>> type(density)==dict
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> len(density) 
+          4
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+        'code': r"""
+          >>> np.isclose(density["diamond"], 3500)
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+        'code': r"""
+          >>> np.isclose(density["quartz"], 2650)
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+        'code': r"""
+          >>> np.isclose(density["clay"], 2580)
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+        'code': r"""
+          >>> np.isclose(density["water"], 1000)
           True
           """,
           'hidden': False,
@@ -14,7 +54,103 @@ test = {
         }
       ],
       'scored': True,
-      'setup': "d1 = read_constants('data/constants.txt'); d2 = {'gravitational constant': 6.67259e-11, 'Boltzmann constant': 1.380658e-23, 'speed of light': 299792458.0, 'Planck constant': 6.6260755e-34, 'electron mass': 9.1093897e-31, 'Avogadro number': 6.0221367e+23, 'elementary charge': 1.60217733e-19, 'proton mass': 1.6726231e-27}",
+      'setup': 'import numpy as np',
+      'teardown': '',
+      'type': 'doctest'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> type(moduli)==dict
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> len(moduli)
+          4
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+        'code': r"""
+          >>> np.allclose(moduli["diamond"], (455., 540.))
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+        'code': r"""
+          >>> np.allclose(moduli["quartz"], (44., 38.))
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+        'code': r"""
+          >>> np.allclose(moduli["clay"], (6.85, 20.9))
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+        'code': r"""
+          >>> np.allclose(moduli["water"], (0., 2.29))
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': 'import numpy as np',
+      'teardown': '',
+      'type': 'doctest'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> np.isclose(density_average, 2432.5)
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': 'import numpy as np',
+      'teardown': '',
+      'type': 'doctest'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> np.isclose(shear_mod_average, 126.4625)
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> np.isclose(bulk_mod_average, 150.29749999999999)
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': 'import numpy as np',
       'teardown': '',
       'type': 'doctest'
     }
